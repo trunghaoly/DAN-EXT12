@@ -14,11 +14,11 @@ def compare():
     with    open('raw_text.txt','r',encoding='utf-8') as rawtext, \
             open('decrypted_text.txt','r',encoding='utf-8') as decrypted:
     
-    # Read content
+        # Read content
         rawdata = rawtext.read()
         decrypteddata = decrypted.read()
     
-    # Compare and print result
+        # Compare and print result
         if rawdata == decrypteddata:
             print(True)
         else:

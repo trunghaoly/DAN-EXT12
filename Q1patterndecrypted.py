@@ -1,8 +1,14 @@
 def decryptedfunction(shift1,shift2):
+    """
+    Decrypts content from file using key from file 'pattern' and shift values.
+    """
+
+    # Open files to read and write
     with    open('encrypted_text.txt','r',encoding='utf-8') as encrypted, \
             open('decrypted_text.txt','w',encoding='utf-8') as decrypted, \
             open('pattern','r') as pattern:
 
+        # Decrypt character by character
         for line1, line2 in zip(encrypted,pattern):
             store2 =''
             for i,k in zip(line1,line2):
@@ -16,4 +22,6 @@ def decryptedfunction(shift1,shift2):
                     store2 += chr((ord(i) - ord('A') - shift2**2) % 26 + ord('A'))
                 else:
                     store2 += i
+            
+            # Save result
             decrypted.write(store2)
