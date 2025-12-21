@@ -31,6 +31,7 @@ dataframes['Season'] = np.select(conditions,choices)
 # Calculate average temperature per season
 grouped = dataframes.groupby('Season')['Temp']
 season_ave_temp = grouped.mean().reset_index()
+season_ave_temp = season_ave_temp.iloc[[1,2,0,3]]
 
 # Save result
 with open ('average_temp.txt','w',encoding='utf-8') as f:
