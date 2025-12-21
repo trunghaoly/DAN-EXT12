@@ -2,10 +2,6 @@
 from Q1patternencrypted import *
 from Q1patterndecrypted import *
 
-# Get user input
-shift1 = int(input ('shift1: '))
-shift2 = int(input('shift2: '))
-
 def compare():
     """
     Verifies if the decrypted text matches the original raw text.
@@ -20,11 +16,38 @@ def compare():
 
         # Compare and print result
         if rawdata == decrypteddata:
-            print(True)
+            print('SUCCESS: The decrypted text matches the original.')
         else:
-            print(False)
+            print('FAILURE: The content does not match.')
 
-# Execute workflow
-encryptedfunction(shift1,shift2)
-decryptedfunction(shift1,shift2)
-compare()
+def main():
+
+    # Loop until the user provides valid integer inputs
+    while True:
+        try:
+            shift1 = int(input('shift1: '))
+            shift2 = int(input('shift2: '))
+            break
+        except ValueError:
+                print('Error: Please enter valid integers for shifts.')
+
+    # Execute workflow
+    try:
+        print("--- Encrypting ---")
+        encryptedfunction(shift1, shift2)
+        
+        print("--- Decrypting ---")
+        decryptedfunction(shift1, shift2)
+        
+        print("--- Comparing ---")
+        compare()
+
+    # Handle potential errors (Missing files, etc.)    
+    except FileNotFoundError:
+        print('Error: One of the required files was not found')
+    except Exception as i:
+        print(f'An unexpected error occurred: {i}')
+
+# Check if the script is being run directly (not imported)
+if __name__ == "__main__":
+    main()

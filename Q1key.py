@@ -22,12 +22,18 @@ def compare():
             print('FAILURE: The content does not match.')
 
 def main():
-    try:
-        # 1. Get user input
-        shift1 = int(input('shift1: '))
-        shift2 = int(input('shift2: '))
 
-        # 2. Execute workflow
+    # Loop until the user provides valid integer inputs
+    while True:
+        try:
+            shift1 = int(input('shift1: '))
+            shift2 = int(input('shift2: '))
+            break
+        except ValueError:
+                print('Error: Please enter valid integers for shifts.')
+
+    # Execute workflow
+    try:
         print("--- Encrypting ---")
         key = encrypted_function(shift1, shift2)
         
@@ -37,9 +43,7 @@ def main():
         print("--- Comparing ---")
         compare()
 
-    # Handle potential errors (Invalid input, Missing files, etc.)    
-    except ValueError:
-        print('Error: Please enter valid integers for shifts.')
+    # Handle potential errors (Missing files, etc.)    
     except FileNotFoundError:
         print('Error: One of the required files was not found')
     except Exception as i:
