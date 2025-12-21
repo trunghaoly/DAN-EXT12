@@ -12,6 +12,9 @@ for filename in file:
 # Merge all data into one DataFrame
 dataframes = pd.concat(full_data, ignore_index = True)
 
+# Ignore missing values (NaN)
+dataframes = dataframes.dropna()
+
 # Convert month columns to rows
 dataframes= dataframes.set_index(['STATION_NAME','STN_ID','LAT','LON']).stack().reset_index()
 dataframes.columns = ['STATION_NAME','STN_ID','LAT','LON','Month','Temp']
