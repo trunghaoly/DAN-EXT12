@@ -9,19 +9,19 @@ month_cols = ["January","February","March","April","May","June",
 dfs = []
 for f in files:
     df = pd.read_csv(f)
-    df["YEAR"] = int(f.stem.split("_")[-1])
+    df["YEAR"] = int(f.stem.split("_")[-1])         # dư
     df[month_cols] = df[month_cols].apply(pd.to_numeric, errors="coerce")
     dfs.append(df)
 data = pd.concat(dfs, ignore_index=True)
-print(data.shape)
-data.head()
+print(data.shape)                                   # dư
+data.head()                                         # dư 
 long_df = data.melt(
     id_vars = identifier_cols,
     value_vars = month_cols,
     var_name="MONTH",                   
     value_name="TEMP"                   
 )
-long_df.head()                          
+long_df.head()                                      # dư                          
 month_to_season = {                                                             
     "December": "Summer", "January": "Summer", "February": "Summer",
     "March": "Autumn", "April": "Autumn", "May": "Autumn",
