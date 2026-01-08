@@ -48,4 +48,4 @@ for i in range(N):
     # Rotate to form the closed polygon
     t.left(360/N)
 
-turtle.done()
+t.screen.mainloop()
